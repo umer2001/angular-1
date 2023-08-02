@@ -1,0 +1,33 @@
+<h5 class="my-2">Available Products</h5>
+<div class="input-group">
+  <select
+    class="form-select w-20"
+    placeholder="category"
+    [formControl]="category"
+  >
+    <option value="">All</option>
+    <option *ngFor="let category of categories" [value]="category">
+      {{ category }}
+    </option>
+  </select>
+  <input
+    type="search"
+    class="form-control w-50"
+    placeholder="Search"
+    [formControl]="search"
+  />
+  <button (click)="searchProducts()" type="button" class="btn btn-primary w-20">
+    search
+  </button>
+</div>
+<div class="row my-2 justify-content-start g-3">
+  <app-product
+    class="col-4"
+    *ngFor="let product of products"
+    [name]="product.name"
+    [cost]="product.cost"
+    [imageUrl]="product.imageUrl"
+    [category]="product.category"
+    (buyEvent)="buy($event)"
+  ></app-product>
+</div>

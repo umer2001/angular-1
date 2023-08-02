@@ -1,0 +1,58 @@
+<h5 class="my-1 mt-3">Sell Product</h5>
+<form [formGroup]="sellForm" (ngSubmit)="onSubmit()">
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Product Name</label>
+    <input class="form-control" formControlName="name" />
+    <div
+      *ngIf="sellForm.get('name')?.invalid && sellForm.get('name')?.touched"
+      class="form-text text-danger"
+    >
+      Product Name is required
+    </div>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Category</label>
+    <select class="form-select" formControlName="category">
+      <option *ngFor="let category of categories" [value]="category">
+        {{ category }}
+      </option>
+    </select>
+    <div
+      *ngIf="
+        sellForm.get('category')?.invalid && sellForm.get('category')?.touched
+      "
+      class="form-text text-danger"
+    >
+      Category is required
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Cost</label>
+    <input type="number" class="form-control" formControlName="cost" />
+    <div
+      *ngIf="sellForm.get('cost')?.invalid && sellForm.get('cost')?.touched"
+      class="form-text text-danger"
+    >
+      Cost is required
+    </div>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Image URL</label>
+    <input type="url" class="form-control" formControlName="imageUrl" />
+    <div
+      *ngIf="
+        sellForm.get('imageUrl')?.invalid && sellForm.get('imageUrl')?.touched
+      "
+      class="form-text text-danger"
+    >
+      Image URL is required
+    </div>
+  </div>
+  <button
+    type="submit"
+    class="btn btn-primary w-100"
+    [disabled]="!sellForm.valid"
+  >
+    Post
+  </button>
+</form>

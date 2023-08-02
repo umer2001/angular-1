@@ -1,0 +1,27 @@
+<div>
+  <dialog #buyModal class="bg-white border-0 rounded" style="width: 18rem">
+    <h4>Are you sure you want to buy {{ name | titlecase }}?</h4>
+    <h5>Cost: ${{ cost }}</h5>
+    <h5>Category: {{ category }}</h5>
+    <div>
+      <button
+        (click)="closeModal()"
+        class="btn btn-secondary me-2"
+        formmethod="dialog"
+      >
+        Cancel
+      </button>
+      <button (click)="buy()" class="btn btn-primary" value="default">
+        Confirm
+      </button>
+    </div>
+  </dialog>
+  <div class="card mx-2" style="width: 100%">
+    <img [src]="imageUrl" class="card-img-top" />
+    <div class="card-body">
+      <h5 class="card-title">{{ name }}</h5>
+      <h6 class="card-title">${{ cost }}</h6>
+      <button (click)="openModal()" class="btn btn-primary w-100">Buy</button>
+    </div>
+  </div>
+</div>
